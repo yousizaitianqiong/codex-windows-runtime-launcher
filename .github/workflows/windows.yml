@@ -1,0 +1,31 @@
+name: Windows 回归
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  regression:
+    runs-on: windows-2022
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - name: 获取源码
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+      - name: 编译辅助 DLL
+        run: .\Build.ps1
+      - name: 运行隔离回归并输出脱敏摘要
+        run: |
+          $testRoot = Join-Path $env:RUNNER_TEMP 'CgRt-tests'
+          & "$env:SystemRoot\System32\WindowsPowerShell\v1.0\powershell.exe" -NoProfile -NonInteractive -STA -File .\tests\Test.ps1 -SkipLive -WorkRoot $testRoot
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $report = Get-Content -LiteralPath (Join-Path $testRoot 'latest-tests.json') -Raw | ConvertFrom-Json
+          if ($report.Passed -ne 45 -or $report.Failed -ne 0 -or $report.Skipped -ne 2) { throw '回归数量或结果不符合预期。' }
+          $summary = @('## Windows PowerShell 5.1 回归', '', ('通过：' + $report.Passed + '；失败：' + $report.Failed + '；跳过真实安装包用例：' + $report.Skipped), '', '未安装或启动 Codex；未执行真实包复制或冷启动测试。')
+          $summary | Out-File -LiteralPath $env:GITHUB_STEP_SUMMARY -Encoding utf8 -Append
+          $global:LASTEXITCODE = 0

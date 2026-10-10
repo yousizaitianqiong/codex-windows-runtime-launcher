@@ -1,0 +1,27 @@
+name: 故障与兼容性 / Bug report
+description: 提供脱敏环境、触发条件与阶段耗时 / Sanitized diagnostics
+body:
+  - type: markdown
+    attributes:
+      value: |
+        请使用中文或英文描述。不要上传原始日志、个人路径、账号信息或官方 runtime 文件。
+        Chinese and English are welcome. Do not attach raw logs, personal paths, account data, or official runtime files.
+  - type: textarea
+    id: environment
+    attributes:
+      label: 环境 / Environment
+      description: Windows、PowerShell、工具版本、Get-AppxPackage 的包版本与 Status；不要粘贴完整包对象。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: 触发条件与实际结果 / Reproduction and actual result
+      description: 是否发生更新、执行模式、是否已有会话、退出码、预期行为。
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: 脱敏证据 / Sanitized evidence
+      description: 阶段耗时、文件数量、完整性结果、源保护类型、是否回退；注明未运行的测试。

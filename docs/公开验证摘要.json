@@ -1,0 +1,431 @@
+{
+  "Schema": 1,
+  "LauncherVersion": "1.1.1",
+  "RecordedDate": "2026-10-10",
+  "Environment": {
+    "Windows": "Windows 11 Home x64",
+    "SourceProtection": "Application Protected",
+    "AppxVersion": "26.1007.2314.0",
+    "OSVersion": "10.0.26200",
+    "RuntimeId": "cfb32733c877621e"
+  },
+  "HistoricalBaseline": {
+    "Note": "首次验收的单次顺序比较；未清空缓存，不含应用窗口加载。",
+    "Stream": {
+      "Time": "2026-10-10T02:40:17.9018215Z",
+      "Method": "Stream",
+      "PackageVersion": "26.1007.2314.0",
+      "RuntimeId": "cfb32733c877621e",
+      "Files": 2365,
+      "Bytes": 251250501,
+      "PipelineMs": 14384,
+      "SourceInventoryMs": 938,
+      "CopyMs": 10908,
+      "VerifyMs": 2301,
+      "CopyAndVerifyMs": 13210,
+      "AllFilesSizeAndSha256Matched": true,
+      "DestinationEncryptedFiles": 0,
+      "WorkerMetrics": {
+        "MaxActiveWorkers": 4,
+        "BufferBytes": 1048576,
+        "CompletedFiles": 2365,
+        "TotalFiles": 2365,
+        "CompatibilityFallback": false
+      }
+    },
+    "Legacy": {
+      "Time": "2026-10-10T02:39:21.9899112Z",
+      "Method": "Legacy",
+      "PackageVersion": "26.1007.2314.0",
+      "RuntimeId": "cfb32733c877621e",
+      "Files": 2365,
+      "Bytes": 251250501,
+      "PipelineMs": 152218,
+      "SourceInventoryMs": 4872,
+      "CopyMs": 113924,
+      "VerifyMs": 33194,
+      "CopyAndVerifyMs": 147120,
+      "AllFilesSizeAndSha256Matched": true,
+      "DestinationEncryptedFiles": 0,
+      "WorkerMetrics": null
+    },
+    "LauncherVersion": "1.1.0",
+    "ReductionPercent": 91.02
+  },
+  "PublicRevalidation": {
+    "RegressionRuns": [
+      {
+        "Group": "隔离回归",
+        "Time": "2026-10-10T03:58:30.2983878Z",
+        "PowerShell": "5.1.26100.9444",
+        "Passed": 45,
+        "Failed": 0,
+        "Skipped": 2,
+        "Cases": [
+          {
+            "Name": "当前 ASAR 算法与实际正式目录吻合",
+            "Passed": null,
+            "Skipped": true,
+            "Milliseconds": null
+          },
+          {
+            "Name": "只读检查不创建目录或状态",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 179
+          },
+          {
+            "Name": "算法保护拒绝摘要、顺序、分隔符和截断变化",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 25
+          },
+          {
+            "Name": "跨进程互斥锁阻止第二个启动器",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 557
+          },
+          {
+            "Name": "首次修复后连续启动仅复制一次",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 424
+          },
+          {
+            "Name": "版本变化但 runtime ID 不变时复用",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 199
+          },
+          {
+            "Name": "manifest 内容变化使用新 hash，保留旧目录",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 223
+          },
+          {
+            "Name": "Node 二进制变化使用新 hash",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 215
+          },
+          {
+            "Name": "node_repl 缺失时修复并备份损坏目录",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 241
+          },
+          {
+            "Name": "普通模块缺失也能被检测",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 238
+          },
+          {
+            "Name": "关键文件同大小同时间戳篡改仍被识别",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 262
+          },
+          {
+            "Name": "损坏状态文件重新校验完整目标，不重复复制",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 187
+          },
+          {
+            "Name": "状态里的旧 hash 不能替代当前 runtime ID",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 200
+          },
+          {
+            "Name": "已有后台进程阻止修复，不结束或启动进程",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 61
+          },
+          {
+            "Name": "完整目标允许唤起已有实例",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 149
+          },
+          {
+            "Name": "复制中出现应用进程时暂缓发布",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 174
+          },
+          {
+            "Name": "空间不足在复制前停止",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 49
+          },
+          {
+            "Name": "xcopy 非零退出不发布半成品",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 69
+          },
+          {
+            "Name": "系统 xcopy 的实际错误也能收集退出码",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 104
+          },
+          {
+            "Name": "xcopy 返回成功但内容不全仍拒绝发布",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 105
+          },
+          {
+            "Name": "复制失败不移动已有损坏目录",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 192
+          },
+          {
+            "Name": "复制中换版仅重试一次并采用新包",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 227
+          },
+          {
+            "Name": "持续换版有界退出，不发布旧目标",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 219
+          },
+          {
+            "Name": "未知算法不会采用旧 staging",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 41
+          },
+          {
+            "Name": "旧 staging 两次稳定观察后回收，正式目录保留",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 227
+          },
+          {
+            "Name": "近期、变化中和进程占用的 staging 均保留",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 165
+          },
+          {
+            "Name": "重解析点和越界路径拒绝处理",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 153
+          },
+          {
+            "Name": "回收失败不降级为永久删除",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 168
+          },
+          {
+            "Name": "安装及回滚恢复旧文件和旧快捷方式",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 577
+          },
+          {
+            "Name": "全新安装回滚保留运行时缓存及修改过的入口",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 379
+          },
+          {
+            "Name": "受保护源文件 xcopy G 的真实隔离复制",
+            "Passed": null,
+            "Skipped": true,
+            "Milliseconds": null
+          },
+          {
+            "Name": "目标缺失时不预先全量计算源摘要",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 36
+          },
+          {
+            "Name": "文件流复制并发不超过四任务，每任务一 MiB 缓冲",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 271
+          },
+          {
+            "Name": "仅权限和加密源读取错误属于兼容回退范围",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 14
+          },
+          {
+            "Name": "真实源文件占用失败后全部流关闭，不触发兼容回退",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 76
+          },
+          {
+            "Name": "真实目标写入失败不会触发源读取回退",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 42
+          },
+          {
+            "Name": "兼容源读取错误只回退一次并隔离失败副本",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 201
+          },
+          {
+            "Name": "兼容回退再次失败后有界停止，两个失败副本均隔离回收",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 113
+          },
+          {
+            "Name": "换版重检后仍保持本次启动最多一次兼容回退",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 218
+          },
+          {
+            "Name": "磁盘、校验及包变化错误不触发兼容回退",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 183
+          },
+          {
+            "Name": "兼容回退前空间不足不调用 xcopy",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 75
+          },
+          {
+            "Name": "恶意复制清单拒绝越界，不修改外部文件",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 23
+          },
+          {
+            "Name": "中文进度显示阶段、文件数和耗时，NoUi 始终安静",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 106
+          },
+          {
+            "Name": "快速完成不显示进度，超过两秒显示一次并正常关闭",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 2787
+          },
+          {
+            "Name": "每次仅深入观察一个 staging，并合并保留其他观察记录",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 203
+          },
+          {
+            "Name": "占用和近期 staging 在深入扫描前过滤",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 155
+          },
+          {
+            "Name": "回收前出现占用仍保留 staging",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 199
+          }
+        ]
+      },
+      {
+        "Group": "真实 ASAR 与正式目录",
+        "Time": "2026-10-10T04:02:44.2828559Z",
+        "PowerShell": "5.1.26100.9444",
+        "Passed": 1,
+        "Failed": 0,
+        "Skipped": 0,
+        "Cases": [
+          {
+            "Name": "当前 ASAR 算法与实际正式目录吻合",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 894
+          }
+        ]
+      },
+      {
+        "Group": "受保护文件真实复制",
+        "Time": "2026-10-10T04:02:44.7547515Z",
+        "PowerShell": "5.1.26100.9444",
+        "Passed": 1,
+        "Failed": 0,
+        "Skipped": 0,
+        "Cases": [
+          {
+            "Name": "受保护源文件 xcopy G 的真实隔离复制",
+            "Passed": true,
+            "Skipped": false,
+            "Milliseconds": 1365
+          }
+        ]
+      }
+    ],
+    "ReductionPercent": 90.58,
+    "FailedAcrossRuns": 0,
+    "Legacy": {
+      "Time": "2026-10-10T04:01:31.6419086Z",
+      "Method": "Legacy",
+      "PackageVersion": "26.1007.2314.0",
+      "RuntimeId": "cfb32733c877621e",
+      "Files": 2365,
+      "Bytes": 251250501,
+      "PipelineMs": 152496,
+      "SourceInventoryMs": 5824,
+      "CopyMs": 115173,
+      "VerifyMs": 31259,
+      "CopyAndVerifyMs": 146434,
+      "AllFilesSizeAndSha256Matched": true,
+      "DestinationEncryptedFiles": 0,
+      "WorkerMetrics": null
+    },
+    "PassedAcrossRuns": 47,
+    "Stream": {
+      "Time": "2026-10-10T04:02:06.7033813Z",
+      "Method": "Stream",
+      "PackageVersion": "26.1007.2314.0",
+      "RuntimeId": "cfb32733c877621e",
+      "Files": 2365,
+      "Bytes": 251250501,
+      "PipelineMs": 15085,
+      "SourceInventoryMs": 1048,
+      "CopyMs": 11455,
+      "VerifyMs": 2334,
+      "CopyAndVerifyMs": 13791,
+      "AllFilesSizeAndSha256Matched": true,
+      "DestinationEncryptedFiles": 0,
+      "WorkerMetrics": {
+        "MaxActiveWorkers": 4,
+        "BufferBytes": 1048576,
+        "CompletedFiles": 2365,
+        "TotalFiles": 2365,
+        "CompatibilityFallback": false
+      }
+    },
+    "Note": "同机同包单次顺序比较；独立目录，不改正式 runtime；未清空缓存。"
+  },
+  "ColdWindowLoadMs": null,
+  "Limits": [
+    "GitHub Actions 只运行 45 项隔离测试，跳过 2 项真实包测试。",
+    "重新构建及隔离安装/回滚已验证；未把公开版再次安装到本机现有入口。",
+    "这些结果不证明当前版本未经修复器的原生冷启动故障。"
+  ]
+}

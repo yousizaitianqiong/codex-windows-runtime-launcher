@@ -1,0 +1,28 @@
+# 本机编译与发布产物
+*.dll
+*.pdb
+*.exe
+*.zip
+*.log
+
+# 本机状态、测试报告与应用数据
+state.json
+installation.json
+staging-observations.json
+latest-tests.json
+*-result.json
+logs/
+bench/
+work/
+outputs/
+runtimes/
+RuntimeLauncher.backups/
+runtime-backups/
+failed-copies/
+.staging-*/
+WindowsApps/
+
+# 编辑器与缓存
+.vs/
+.idea/
+__pycache__/
